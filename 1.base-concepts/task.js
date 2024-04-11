@@ -7,7 +7,7 @@ function solveEquation(a, b, c) {
     arr.push((-b / 2 * a));
   }
 
-  else if(Discriminant > 0){
+  else if(Discriminant > 0) {
   let rootEquation = [];
   rootEquation.push((-b + Math.sqrt(Discriminant)) / (2 * a));
   rootEquation.push((-b - Math.sqrt(Discriminant)) / (2 * a));
@@ -19,10 +19,12 @@ return arr;
 solveEquation(2, 4, 1);
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-  percent = (Math.random() / 12);
+  const P = percent / 100 / 12;
   let loanBody = amount - contribution;
-  let payment = loanBody * (percent + (percent / (((1 + percent) ** countMonths)) - 1))ж
-  let totalAmount = (payment * 12).+toFixed(2);
+  let payment = loanBody * (P + (P / (((1 + P) ** countMonths) - 1)));
+  let totalAmount = payment * 12;
+  +totalAmount.toFixed(2);
   return;
-}
-calculateTotalMortgage(10, 0, 50000, 12);
+};
+
+calculateTotalMortgage(10, 20000, 20000, 48);
