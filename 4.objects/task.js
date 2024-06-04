@@ -20,19 +20,20 @@ Student.prototype.addMarks = function (...marks) {
 }
 
 Student.prototype.getAverage = function () {
-  if (this.marks.length === 0) {
+  if (this.marks?.length === 0) {
     return 0;
   }
-
-  let sum = this.marks.reduce((total, mark) => total + mark, 0);
-  return sum / this.marks.length;
+  let sum = this.marks?.reduce((total, mark) => total + mark, 0);
+  return sum / this.marks?.length;
+  
 }
 
 Student.prototype.exclude = function (reason) {
   delete this.subject;
   delete this.marks;
+  delete this.addMarks;
   Object.defineProperty(this, 'excluded', {
-    value: 'прогулы',
+    value: reason,
   });
 }
 
