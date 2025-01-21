@@ -13,28 +13,24 @@ Student.prototype.setSubject = function (subjectName) {
 Student.prototype.addMarks = function (...marks) {
   if (this.hasOwnProperty('marks')) {
     this.marks.push(...marks);
-  }
-  else {
-    return 0;
-  }
+  };
 }
 
 Student.prototype.getAverage = function () {
-  if (this.marks?.length === 0) {
-    return 0;
-  }
-  let sum = this.marks?.reduce((total, mark) => total + mark, 0);
+  if (this.marks?.length === 0 || this.hasOwnProperty('marks')) {
+    let sum = this.marks?.reduce((total, mark) => total + mark, 0);
   return sum / this.marks?.length;
+  }
+ else {
+  return 0;
+ }
   
 }
 
 Student.prototype.exclude = function (reason) {
   delete this.subject;
   delete this.marks;
-  delete this.addMarks;
-  Object.defineProperty(this, 'excluded', {
-    value: reason,
-  });
+  this.excluded = reason,
 }
 
 
