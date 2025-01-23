@@ -26,7 +26,7 @@ class Triangle {
         this.b = b;
         this.c = c;
 
-        if (this.a + this.b <= this.c || this.a + this.c <= this.b || this.b + this.c <= this.a) {
+        if (this.a + this.b < this.c || this.a + this.c < this.b || this.b + this.c < this.a) {
             throw new Error("Треугольник с такими сторонами не существует");
         }
     }
@@ -36,8 +36,9 @@ class Triangle {
     }
 
     get area() {
-        const s = this.perimeter / 2; // Полупериметр
-        return Math.sqrt(s * (s - this.a) * (s - this.b) * (s - this.c)).toFixed(3);
+        const p = this.perimeter / 2;
+        const area = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c)).toFixed(3);
+        return +area;
     }
 }
 
